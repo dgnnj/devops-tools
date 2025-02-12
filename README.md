@@ -1,56 +1,56 @@
 # DevOps Tools Installer 🛠️
 
-Este repositório contém um script Bash para instalar automaticamente as ferramentas essenciais utilizadas por profissionais de DevOps. O script é compatível com distribuições baseadas em **Debian/Ubuntu**.
+This repository contains a Bash script to automatically install essential tools used by DevOps professionals. The script is compatible with **Debian/Ubuntu**-based distributions.
 
-## Ferramentas Instaladas
+## Installed Tools
 
-O script instala as seguintes ferramentas:
+The script installs the following tools:
 
-- **Ferramentas Básicas**: `curl`, `wget`, `git`, `jq`, `unzip`, `build-essential`, `software-properties-common`
+- **Basic Tools**: `curl`, `wget`, `git`, `jq`, `unzip`, `build-essential`, `software-properties-common`
 - **Docker**: Docker CE, Docker Compose
 - **Kubernetes**: `kubectl`
 - **CLIs**: AWS CLI, Azure CLI
 - **Helm**: Helm, Helmfile
 - **Terraform**: Terraform, `terraform-docs`
 - **Python**: Python 3, `pip`, `pre-commit`
-- **Outras Ferramentas**: Ansible, Vault, Vagrant, Packer, Prometheus, Node.js, npm
-- **Monitoramento**: `htop`, `iftop`, `nmon`, `dstat`
-- **Rede**: `nmap`, `tcpdump`, `iperf`
-- **Desenvolvimento**: `vim`, `tmux`, `zsh`
-- **Editor de Código**: Visual Studio Code (VSCode)
+- **Other Tools**: Ansible, Vault, Vagrant, Packer, Prometheus, Node.js, npm
+- **Monitoring**: `htop`, `iftop`, `nmon`, `dstat`
+- **Networking**: `nmap`, `tcpdump`, `iperf`
+- **Development**: `vim`, `tmux`, `zsh`
+- **Code Editor**: Visual Studio Code (VSCode)
 
-## Como Usar
+## How to Use
 
-### Pré-requisitos
+### Prerequisites
 
-- Um sistema operacional baseado em **Debian/Ubuntu**.
-- Acesso de superusuário (`sudo`).
+- A **Debian/Ubuntu**-based operating system.
+- Superuser access (`sudo`).
 
-## Como Usar
+## How to Use
 
-### Instalação Automática
+### Automatic Installation
 
-Execute o seguinte comando no terminal para instalar todas as ferramentas:
+Run the following command in the terminal to install all tools:
 ```bash
 curl -s https://raw.githubusercontent.com/dgnnj/devops-tools/main/install_devops_tools.sh | bash
 ```
 
-### Instalação Manual
+### Manual Installation
 
-Clone este repositório:
+Clone this repository:
 ```bash
 git clone https://github.com/dgnnj/devops-tools.git
 cd devops-tools
 ```
-Torne o script executável:
+Make the script executable:
 ```bash
 chmod +x install_devops_tools.sh
 ```
 
-Execute o script:
+Run the script:
 ```bash
 ./install_devops_tools.sh
 ```
 
-### Relatório de Instalação
-No final da execução, o script exibirá um relatório indicando quais ferramentas foram instaladas com sucesso e quais falharam.
+### Installation Report
+At the end of the execution, the script will display a report indicating which tools were installed successfully and which failed.
