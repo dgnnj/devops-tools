@@ -156,7 +156,8 @@ if ! is_installed pipx; then
     echo "Instalando pipx..."
     sudo apt install -y pipx
     pipx ensurepath
-    export PATH="$HOME/.local/bin:$PATH"  # Atualiza o PATH na sessão atual
+    # Atualiza PATH para a sessão atual
+    export PATH="$PATH:$HOME/.local/bin"
 else
     echo "[SKIP] pipx já está instalado."
 fi
@@ -165,13 +166,18 @@ fi
 if ! is_installed pre-commit; then
     echo "Instalando pre-commit..."
     pipx install pre-commit
-    export PATH="$HOME/.local/bin:$PATH"  # Atualiza o PATH na sessão atual
+    # Garante que o PATH está atualizado
+    export PATH="$PATH:$HOME/.local/bin"
 else
     echo "[SKIP] pre-commit já está instalado."
 fi
 
-# Verifica instalação do pre-commit
-check_installation pre-commit
+# Verificação adicional para pre-commit
+if is_installed pre-commit; then
+    echo "[VERSION CHECK] $(pre-commit --version)"
+else
+    echo "[ERROR] pre-commit não foi encontrado no PATH"
+fi
 
 # Instala terraform-docs
 if ! is_installed terraform-docs; then
@@ -233,7 +239,7 @@ done
 
 # Instala ferramentas de desenvolvimento
 echo "Instalando ferramentas de desenvolvimento..."
-for tool in vim tmux zsh; do
+for tool in vim tmux; do
     if ! is_installed $tool; then
         sudo apt-get install -y $tool
     else
@@ -242,7 +248,7 @@ for tool in vim tmux zsh; do
 done
 
 # Verifica instalação de ferramentas de desenvolvimento
-for tool in vim tmux zsh; do
+for tool in vim tmux; do
     check_installation $tool
 done
 
@@ -257,14 +263,6 @@ fi
 # Verifica instalação do VSCode
 check_installation code
 
-# Configura o Zsh como shell padrão (opcional)
-if [ "$SHELL" != "$(which zsh)" ]; then
-    echo "Configurando Zsh como shell padrão..."
-    sudo chsh -s $(which zsh) $(whoami)
-else
-    echo "[SKIP] Zsh já é o shell padrão."
-fi
-
 # Limpa cache de pacotes
 sudo apt-get autoremove -y
 sudo apt-get clean
@@ -273,7 +271,7 @@ sudo apt-get clean
 echo ""
 echo "=== Relatório de Instalação ==="
 echo "Verifique abaixo se todas as ferramentas foram instaladas corretamente:"
-for tool in curl wget git jq unzip docker docker-compose kubectl aws az helm helmfile terraform python3 pip3 pre-commit terraform-docs ansible vault vagrant packer prometheus nodejs npm htop iftop nmon dstat nmap tcpdump iperf vim tmux zsh code; do
+for tool in curl wget git jq unzip docker docker-compose kubectl aws az helm helmfile terraform python3 pip3 pre-commit terraform-docs ansible vault vagrant packer prometheus nodejs npm htop iftop nmon dstat nmap tcpdump iperf vim tmux code; do
     check_installation $tool
 done
 
