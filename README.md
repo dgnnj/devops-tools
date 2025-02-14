@@ -16,7 +16,7 @@ The script installs the following tools:
 - **Other Tools**: Ansible, Vault, Vagrant, Packer, Prometheus, Node.js, npm
 - **Monitoring**: `htop`, `iftop`, `nmon`, `dstat`
 - **Networking**: `nmap`, `tcpdump`, `iperf`
-- **Development**: `vim`, `tmux`, `zsh`
+- **Development**: `vim`, `tmux`
 - **Code Editor**: Visual Studio Code (VSCode)
 
 ## How to Use
